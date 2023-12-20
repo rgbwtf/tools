@@ -69,7 +69,20 @@ export const Icons = {
   ),
   help: HelpCircle,
   laptop: Laptop,
-  logo: Puzzle,
+  logo: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="rgb"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 120 120"
+      {...props}
+    >
+      <path d="M24 0H48H72H96H120V24V48V72V96H96V120H72H48H24H0V96V72V48V24H24V48H48V72H72V48H48V24H24V0Z" fill="currentColor"/>
+    </svg>
+  ),
   media: Image,
   moon: Moon,
   page: File,

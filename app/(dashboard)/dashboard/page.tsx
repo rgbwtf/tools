@@ -21,16 +21,16 @@ export default async function DashboardPage() {
   return (
     <DashboardShell>
       <DashboardHeader heading="Panel" text="Create and manage content.">
-        <Button>Fake button</Button>
+        {/* <Button>Fake button</Button> */}
       </DashboardHeader>
       <div>
         <EmptyPlaceholder>
           <EmptyPlaceholder.Icon name="post" />
-          <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Title>Gm</EmptyPlaceholder.Title>
           <EmptyPlaceholder.Description>
-            You don&apos;t have any content yet. Start creating content.
+            Coming soon...
           </EmptyPlaceholder.Description>
-          <Button variant="outline">Fake button</Button>
+          {/* <Button variant="outline">Fake button</Button> */}
         </EmptyPlaceholder>
       </div>
     </DashboardShell>

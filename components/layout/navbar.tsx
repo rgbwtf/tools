@@ -10,7 +10,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useSigninModal } from "@/hooks/use-signin-modal";
 
-
 interface NavBarProps {
   user: Pick<User, "name" | "image" | "email"> | undefined
   items?: MainNavItem[]

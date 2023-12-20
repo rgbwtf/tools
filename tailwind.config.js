@@ -62,8 +62,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        urban: ["var(--font-urban)", ...fontFamily.sans],
+        sans: ['var(--font-geist-sans)', ...fontFamily.sans],
+        mono: ['var(--font-geist-mono)', ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
       keyframes: {
@@ -137,6 +137,10 @@ module.exports = {
         // Fade in and out
         "fade-in": "fade-in 0.4s",
         "fade-out": "fade-out 0.4s",
+      },
+      spacing: {
+        '30': '7.5rem',
+        '33': '8.4375rem',
       },
     },
   },

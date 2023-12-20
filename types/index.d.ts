@@ -34,6 +34,7 @@ export type SiteConfig = {
   ogImage: string
   mailSupport: string
   links: {
+    lab: string,
     twitter: string
     github: string
   }
@@ -75,3 +76,28 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     interval: "month" | "year" | null
     isCanceled?: boolean
   }
+
+
+export type SignatureProps = {
+  binary: [string, string, string];
+}
+
+export type RGB = {
+	red: number;
+	green: number;
+	blue: number;
+}
+
+export type PaletteProps = {
+	rgb: [number, number, number];
+}
+
+export type RGBInputsProps = {
+	rgb: [number, number, number];
+	handleChange: (index: number, event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export type ControlsProps = {
+	handleDownload: () => void;
+	randomRgb: () => void;
+}

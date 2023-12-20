@@ -36,11 +36,11 @@ export const authOptions: NextAuthOptions = {
 
         const userVerified = user?.emailVerified ? true : false;
         const authSubject = userVerified ? `Sign-in link for ${siteConfig.name}` : "Activate your account";
-
+        
         try {
           const result = await resend.emails.send({
-            from: 'SaaS Starter App <onboarding@resend.dev>',
-            to: process.env.NODE_ENV === "development" ? 'delivered@resend.dev' : identifier,
+            from: 'RGB Tools <onboarding@rgb.tools>',
+            to: process.env.NODE_ENV === "development" ? 'zeno@ratlabs.xyz' : identifier,
             subject: authSubject,
             react: MagicLinkEmail({
               firstName: user?.name as string,
@@ -54,8 +54,6 @@ export const authOptions: NextAuthOptions = {
               'X-Entity-Ref-ID': new Date().getTime() + "",
             },
           });
-
-          // console.log(result)
         } catch (error) {
           throw new Error("Failed to send verification email.")
         }
