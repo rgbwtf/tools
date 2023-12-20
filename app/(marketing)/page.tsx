@@ -32,7 +32,7 @@ export default async function IndexPage() {
           >
             <Balancer>
               Limitless {" "}
-              <span className="relative bg-gradient-to-r from-gray-900 to-gray-400/80 dark:from-gray-400 dark:to-white/80 bg-clip-text font-extrabold text-transparent">
+              <span className="relative bg-clip-text font-extrabold text-transparent bg-gradient-to-r from-gray-900 dark:from-gray-400 to-gray-400/80 dark:to-white/80">
                 Creativity
               </span>
             </Balancer>
