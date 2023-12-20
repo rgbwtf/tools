@@ -103,7 +103,7 @@ const actions = [
   {
     live: true,
     title: 'Generate',
-    description: 'Manage your team’s time off requests',
+    description: 'Create a signature for any RGB value.',
     href: '/generate',
     icon: ArrowPathRoundedSquareIcon,
     iconForeground: 'text-teal-700',
