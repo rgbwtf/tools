@@ -6,7 +6,7 @@ const site_url = env.NEXT_PUBLIC_APP_URL;
 export const siteConfig: SiteConfig = {
   name: "RBG Tools",
   description:
-    "Canvases for Limitless Creativity",
+    "A canvas for limitless creativity.",
   url: site_url,
   ogImage: `${site_url}/og.jpg`,
   links: {
