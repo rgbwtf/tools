@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server"
-import generateRgb from "@/lib/rgb";
+import { generateRgb } from "@/lib/rgb";
 export async function GET(request: NextRequest) {
 	const { searchParams } = request.nextUrl
 	const rgb = searchParams.get('rgb')

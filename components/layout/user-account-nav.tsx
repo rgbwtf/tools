@@ -41,7 +41,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/dashboard" className="flex items-center space-x-2.5 cursor-pointer">
+          <Link href="/dashboard" className="flex cursor-pointer items-center space-x-2.5">
             <LayoutDashboard className="h-4 w-4" />
             <p className="text-sm">Dashboard</p>
           </Link>

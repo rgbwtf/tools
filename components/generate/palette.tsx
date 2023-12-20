@@ -4,7 +4,7 @@ import { PaletteProps } from "@/types";
 const Palette: FC<PaletteProps> = ({ rgb }) => {
   return (
     <div
-		className="h-32 w-32 md:h-60 md:w-60 sh m-4 border place-self-center"
+		className="sh m-4 h-32 w-32 place-self-center border md:h-60 md:w-60"
 		style={{
 			backgroundColor: `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
 		}}

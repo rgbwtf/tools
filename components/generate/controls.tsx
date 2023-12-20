@@ -3,18 +3,18 @@ import { ControlsProps } from "@/types";
 
 const Controls: FC<ControlsProps> = ({ handleDownload, randomRgb }) => {
 	return (
-		<div className="grid grid-cols-3 md:grid-cols-5 justify-center my-6">
+		<div className="my-6 grid grid-cols-3 justify-center md:grid-cols-5">
 			<button
 				type="button"
 				onClick={handleDownload}
-				className="rounded-md px-4 py-3 text-xs md:text-sm font-semibold text-white shadow-sm bg-zinc-800 hover:bg-zinc-900 col-span-1 col-start-2 md:col-start-3 hidden sm:block"
+				className="col-span-1 col-start-2 hidden rounded-md bg-zinc-800 px-4 py-3 text-xs font-semibold text-white shadow-sm hover:bg-zinc-900 sm:block md:col-start-3 md:text-sm"
 			>
 				Download
 			</button>
 			<button
 				type="button"
 				onClick={randomRgb}
-				className="rounded-md px-4 py-3 text-xs md:text-sm font-semibold text-white shadow-sm bg-zinc-800 hover:bg-zinc-900 col-span-1 col-start-2 md:col-start-3 sm:hidden"
+				className="col-span-1 col-start-2 rounded-md bg-zinc-800 px-4 py-3 text-xs font-semibold text-white shadow-sm hover:bg-zinc-900 sm:hidden md:col-start-3 md:text-sm"
 			>
 				Randomize
 			</button>

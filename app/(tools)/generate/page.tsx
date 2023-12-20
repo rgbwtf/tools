@@ -118,16 +118,16 @@ export default function GeneratePage() {
     <>
       <section className="space-y-6 pb-12 pt-16 lg:py-28">
         <div
-          className="container flex max-w-[64rem] flex-col items-center gap-5 text-center animate-fade-up opacity-0"
+          className="container flex max-w-[64rem] animate-fade-up flex-col items-center gap-5 text-center opacity-0"
           style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
         >
-          <div className="flex flex-col sm:flex-row justify-center my-8">
+          <div className="my-8 flex flex-col justify-center sm:flex-row">
             <Signature binary={binary as [string, string, string]} />
             <Palette rgb={rgb as [number, number, number]} />
           </div>
           <RGBInputs rgb={rgb as [number, number, number]} handleChange={handleChange} />
           <Controls handleDownload={handleDownload} randomRgb={randomRgb} />
-          <div className="w-full hidden sm:flex justify-center text-zinc-800 mb-8">
+          <div className="mb-8 hidden w-full justify-center text-zinc-800 sm:flex">
             <p>Use <code>Spacebar</code> or ← → to randomize</p>
           </div>
         </div>

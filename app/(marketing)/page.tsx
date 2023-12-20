@@ -1,11 +1,8 @@
 import Link from "next/link"
-
 import { buttonVariants } from "@/components/ui/button"
-import { siteConfig } from "@/config/site"
-import { cn, nFormatter } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import Balancer from "react-wrap-balancer"
 import { Icons } from "@/components/shared/icons"
-import { env } from "@/env.mjs"
 import {
   ArrowPathRoundedSquareIcon,
   ArrowUpRightIcon,
@@ -21,22 +18,22 @@ export default async function IndexPage() {
       <section className="space-y-6 pb-12 pt-16 lg:py-28">
         <div className="container flex max-w-[64rem] flex-col items-center gap-5 text-center">
           <Link
-            href="https://twitter.com/miickasmt/status/1719892161095745801"
+            href="https://x.com/m3tamonk/status/1643567236676739072?s=20"
             className={cn(buttonVariants({ variant: "outline", size: "sm" }), "animate-fade-up opacity-0")}
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
             target="_blank"
           >
-            Introducing on <Icons.twitter className="ml-2 h-4 w-4" />
+            Introduced on <Icons.twitter className="ml-2 h-4 w-4" />
           </Link>
 
           <h1
-            className="animate-fade-up font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="font-urban animate-fade-up text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
             <Balancer>
-              Kick off with a bang with{" "}
-              <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
-                SaaS Starter
+              Limitless {" "}
+              <span className="relative bg-gradient-to-r from-gray-900 to-gray-400/80 dark:from-gray-400 dark:to-white/80 bg-clip-text font-extrabold text-transparent">
+                Creativity
               </span>
             </Balancer>
           </h1>
@@ -46,7 +43,7 @@ export default async function IndexPage() {
             style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
           >
             <Balancer>
-              Build your next project using Next.js 14, Prisma, Planetscale, Auth.js, Resend, React Email, Shadcn/ui, Stripe.
+              Discover tools for the next generation of ideas.
             </Balancer>
           </p>
         </div>
@@ -56,7 +53,7 @@ export default async function IndexPage() {
         className="container animate-fade-up py-16 opacity-0"
         style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
       >
-        <div className="divide-y divide-x-0 border divide-border overflow-hidden sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0 sm:divide-x">
+        <div className="divide-x-0 divide-y divide-border overflow-hidden border sm:grid sm:grid-cols-2 sm:gap-px sm:divide-x sm:divide-y-0">
           {actions.map((action, actionIdx) => (
             <div
               key={actionIdx}
@@ -93,7 +90,7 @@ export default async function IndexPage() {
                   {action.live ? action.description : 'Stay tuned for updates on this feature.'}
                 </p>
               </div>
-              <ArrowUpRightIcon className="pointer-events-none absolute right-6 top-6  group-hover:text-gray-400 h-6 w-6" aria-hidden="true" />
+              <ArrowUpRightIcon className="pointer-events-none absolute right-6 top-6  h-6 w-6 group-hover:text-gray-400" aria-hidden="true" />
             </div>
           ))}
         </div>
