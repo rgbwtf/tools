@@ -100,4 +100,5 @@ export type RGBInputsProps = {
 export type ControlsProps = {
 	handleDownload: () => void;
 	randomRgb: () => void;
+  className?: string;
 }
