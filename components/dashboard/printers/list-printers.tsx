@@ -24,7 +24,7 @@ const PrintersList = async ({
 							key={printer.id}
 							className="relative flex items-center space-x-3 border px-6 py-5 shadow-sm"
 						>
-							<div className="flex-shrink-0">
+							<div className="shrink-0">
 								<Image className="h-20 w-20" src={printer.imageUrl || ''} alt={printer.title} width={600} height={600} />
 							</div>
 							<div className="min-w-0 flex-1">

@@ -55,7 +55,7 @@ export default async function IndexPage() {
         style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
       >
         <Container>
-          <div className="divide-x-0 divide-y divide-border overflow-hidden border sm:grid sm:grid-cols-2 sm:gap-px sm:divide-x sm:divide-y-0">
+          <div className="divide-x-0 divide-y divide-border overflow-hidden border sm:grid sm:grid-cols-2 sm:gap-px sm:divide-x sm:divide-y-0 max-w-[48rem] mx-auto">
             {actions.map((action, actionIdx) => (
               <div
                 key={actionIdx}
@@ -113,9 +113,10 @@ const actions = [
     iconBackground: 'bg-teal-50',
   },
   {
-    live: false,
-    title: 'Print',
-    href: '#',
+    live: true,
+    title: 'Printers',
+    description: 'Explore generative prints for any RGB value.',
+    href: '/printers',
     icon: PrinterIcon,
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
