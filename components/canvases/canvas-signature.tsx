@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { SignatureProps } from "@/types";
 
-const Signature: FC<SignatureProps> = ({ binary }) => {
+const CanvasSignature: FC<SignatureProps> = ({ binary }) => {
 	// Convert the RGB values to binary
 	const redBinary = binary[0];
 	const greenBinary = binary[1];
@@ -132,4 +132,4 @@ const Signature: FC<SignatureProps> = ({ binary }) => {
 	);
 };
 
-export default Signature;
+export default CanvasSignature;

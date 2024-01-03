@@ -13,7 +13,7 @@ export function BlogPosts({ posts }) {
             {posts[0].image && (
               <Image
                 alt={posts[0].title}
-                className="w-full rounded-lg border object-cover object-center md:h-64 lg:h-72"
+                className="w-full border object-cover object-center md:h-64 lg:h-72"
                 height={452}
                 src={posts[0].image}
                 width={804}
@@ -51,7 +51,7 @@ export function BlogPosts({ posts }) {
                   src={post.image}
                   width={804}
                   height={452}
-                  className="rounded-md border bg-muted transition-colors"
+                  className="border bg-muted transition-colors"
                 />
               )}
               <h2 className="line-clamp-1 font-heading text-2xl">{post.title}</h2>

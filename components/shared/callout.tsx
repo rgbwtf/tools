@@ -15,7 +15,7 @@ export function Callout({
 }: CalloutProps) {
   return (
     <div
-      className={cn("mt-6 flex items-start rounded-md border px-4 py-3", {
+      className={cn("mt-6 flex items-start border px-4 py-3", {
         "text-blue-800 border-blue-200 bg-blue-100 dark:text-blue-200 dark:border-blue-200/40 dark:bg-blue-900/40":
           type === "info",
         "text-red-900 border-red-200 bg-red-100 dark:text-red-200 dark:border-red-200/30 dark:bg-red-900/40":

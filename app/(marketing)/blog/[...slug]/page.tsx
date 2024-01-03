@@ -13,6 +13,7 @@ import { absoluteUrl, cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/shared/icons"
 import Balancer from "react-wrap-balancer"
+import Container from "@/components/container"
 
 interface PostPageProps {
   params: {
@@ -96,17 +97,19 @@ export default async function PostPage({ params }: PostPageProps) {
   )
 
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10">
-      <Link
-        href="/blog"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute left-[-200px] top-14 hidden xl:inline-flex"
-        )}
-      >
-        <Icons.chevronLeft className="mr-2 h-4 w-4" />
-        See all posts
-      </Link>
+    <article className="relative max-w-3xl py-6 lg:py-10">
+      <Container>
+        <Link
+          href="/blog"
+          className={cn(
+            buttonVariants({ variant: "ghost" }),
+            "absolute left-[-200px] top-14 hidden xl:inline-flex"
+          )}
+        >
+          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          See all posts
+        </Link>
+      </Container>
       <div>
         {post.date && (
           <time
@@ -155,7 +158,7 @@ export default async function PostPage({ params }: PostPageProps) {
           alt={post.title}
           width={720}
           height={405}
-          className="my-8 rounded-md border bg-muted transition-colors"
+          className="my-8 border bg-muted transition-colors"
           priority
         />
       )}

@@ -1,0 +1,36 @@
+
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
+
+import { prisma } from "@/lib/db";
+import { getCurrentUser } from "./session"
+
+interface Props {
+  entityId: string;
+  entityType: ENTITY_TYPE,
+  entityTitle: string;
+  action: ACTION;
+};
+
+export const createAuditLog = async (props: Props) => {
+  try {
+		const user = await getCurrentUser()
+
+    if (!user || !user.id) {
+      throw new Error("User not found!");
+    }
+
+    const { entityId, entityType, entityTitle, action } = props;
+
+    await prisma.auditLog.create({
+      data: {
+        entityId,
+        entityType,
+        entityTitle,
+        action,
+				userId: user.id,
+      }
+    });
+  } catch (error) {
+    console.log("[AUDIT_LOG_ERROR]", error);
+  }
+}

@@ -8,6 +8,7 @@ import { Icons } from "@/components/shared/icons"
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { getCurrentUser } from "@/lib/session"
+import Container from "@/components/container"
 
 interface DocsLayoutProps {
   children: React.ReactNode
@@ -42,7 +43,7 @@ export default async function DocsLayout({ children }: DocsLayoutProps) {
       <NavBar user={user} items={docsConfig.mainNav} rightElements={rightHeader()}>
         <DocsSidebarNav items={docsConfig.sidebarNav} />
       </NavBar>
-      <div className="container flex-1">{children}</div>
+      <Container className="flex-1">{children}</Container>
       <SiteFooter className="border-t" />
     </div>
   )

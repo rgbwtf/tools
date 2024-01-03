@@ -56,11 +56,14 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  printers Printer[]
 
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+
+  permissions PERMISSIONS @default(USER)
 
   @@map(name: "users")
 }
@@ -72,4 +75,89 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map(name: "verification_tokens")
+}
+
+model Printer {
+  id    String @id @default(uuid())
+  title String
+
+  imageId  String? @unique
+  imageUrl String? @db.Text
+
+  cartridges Cartridge[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  userId     String
+  user       User        @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Cartridge {
+  id String @id @default(uuid())
+
+  printerId String?  @unique
+  printer   Printer? @relation(fields: [printerId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  layers    Layer[]
+
+  @@index([printerId])
+}
+
+model Layer {
+  id String @id @default(uuid())
+
+  value   Int?
+  channel String?
+
+  imageId  String @unique
+  imageUrl String @db.Text
+
+  uploadStatus UploadStatus @default(PENDING)
+
+  cartridgeId String?
+  cartridge   Cartridge? @relation(fields: [cartridgeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([cartridgeId])
+}
+
+enum UploadStatus {
+  PENDING
+  PROCESSING
+  FAILED
+  SUCCESS
+}
+
+enum PERMISSIONS {
+  ADMIN
+  USER
+}
+
+enum ACTION {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum ENTITY_TYPE {
+  PRINTER
+  CARTRIDGE
+  LAYER
+}
+
+model AuditLog {
+  id          String      @id @default(uuid())
+  action      ACTION
+  entityId    String
+  entityType  ENTITY_TYPE
+  entityTitle String
+  userId      String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

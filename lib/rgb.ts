@@ -1,3 +1,5 @@
+import { Rgb } from "./validations/printer"
+
 export const generateRgb = (): [number, number, number] => {
 	const r = Math.floor(Math.random() * 256);
 	const g = Math.floor(Math.random() * 256);

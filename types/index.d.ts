@@ -40,6 +40,12 @@ export type SiteConfig = {
   }
 }
 
+export type Printer = {
+  id: string
+  title: string
+  image: string
+}
+
 export type DocsConfig = {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
@@ -77,6 +83,9 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     isCanceled?: boolean
   }
 
+export type UserAdmin = User & {
+  permissions: string
+}
 
 export type SignatureProps = {
   binary: [string, string, string];
@@ -92,13 +101,14 @@ export type PaletteProps = {
 	rgb: [number, number, number];
 }
 
-export type RGBInputsProps = {
-	rgb: [number, number, number];
-	handleChange: (index: number, event: ChangeEvent<HTMLInputElement>) => void;
-}
-
 export type ControlsProps = {
 	handleDownload: () => void;
 	randomRgb: () => void;
   className?: string;
+}
+
+declare global {
+  interface File {
+    path: string;
+  }
 }

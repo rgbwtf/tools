@@ -8,6 +8,7 @@ import MagicLinkEmail from "@/emails/magic-link-email"
 import { env } from "@/env.mjs"
 import { prisma } from "@/lib/db"
 import { resend } from "./email"
+import { PERMISSIONS } from "@prisma/client"
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -62,11 +63,13 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ token, session }) {
+
       if (token) {
         session.user.id = token.id
         session.user.name = token.name
         session.user.email = token.email
         session.user.image = token.picture
+        session.user.permissions = token.permissions as PERMISSIONS
       }
 
       return session
@@ -90,6 +93,7 @@ export const authOptions: NextAuthOptions = {
         name: dbUser.name,
         email: dbUser.email,
         picture: dbUser.image,
+        permissions: dbUser.permissions,
       }
     },
   },

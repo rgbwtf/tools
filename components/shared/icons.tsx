@@ -1,3 +1,4 @@
+import { Square3Stack3DIcon, PhotoIcon } from "@heroicons/react/24/outline"
 import {
   AlertTriangle,
   ArrowRight,
@@ -15,14 +16,15 @@ import {
   Moon,
   MoreVertical,
   Plus,
-  Puzzle,
   Search,
   Settings,
+  SquareStack,
   SunMedium,
   Trash,
   User,
   X,
   LucideIcon,
+  Printer,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -83,13 +85,15 @@ export const Icons = {
       <path d="M24 0H48H72H96H120V24V48V72V96H96V120H72H48H24H0V96V72V48V24H24V48H48V72H72V48H48V24H24V0Z" fill="currentColor"/>
     </svg>
   ),
-  media: Image,
+  media: PhotoIcon,
   moon: Moon,
   page: File,
   post: FileText,
+  printer: Printer,
   search: Search,
   settings: Settings,
   spinner: Loader2,
+  squareStack: Square3Stack3DIcon,
   sun: SunMedium,
   trash: Trash,
   twitter: ({ ...props }: LucideProps) => (

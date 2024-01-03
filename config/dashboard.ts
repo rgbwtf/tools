@@ -15,19 +15,11 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
-      title: "Panel",
+      title: "Overview",
       href: "/dashboard",
       icon: "post",
     },
-    // {
-    //   title: "Billing",
-    //   href: "/dashboard/billing",
-    //   icon: "billing",
-    // },
-    // {
-    //   title: "Settings",
-    //   href: "/dashboard/settings",
-    //   icon: "settings",
-    // },
   ],
 }
+
+

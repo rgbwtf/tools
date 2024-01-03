@@ -9,6 +9,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useSigninModal } from "@/hooks/use-signin-modal";
+import Container from "@/components/container";
 
 interface NavBarProps {
   user: Pick<User, "name" | "image" | "email"> | undefined
@@ -29,7 +30,7 @@ export function NavBar({ user, items, children, rightElements, scroll = false }:
           : "bg-background/0"
           : "border-b"}`}
       >
-        <div className="container flex h-16 items-center justify-between py-4">
+        <Container className="flex h-16 items-center justify-between py-4">
           <MainNav items={items}>{children}</MainNav>
 
           <div className="flex items-center space-x-3">
@@ -52,7 +53,7 @@ export function NavBar({ user, items, children, rightElements, scroll = false }:
               <Button className="px-3" variant="default" size="sm" onClick={signInModal.onOpen}>Sign In</Button>
             )}
           </div>
-        </div>
+        </Container>
       </header>
   );
 }

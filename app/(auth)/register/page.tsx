@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/shared/icons"
 import { UserAuthForm } from "@/components/forms/user-auth-form"
+import Container from "@/components/container"
 
 export const metadata = {
   title: "Create an account",
@@ -12,7 +13,7 @@ export const metadata = {
 
 export default function RegisterPage() {
   return (
-    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <Container className="grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
       <Link
         href="/login"
         className={cn(
@@ -54,6 +55,6 @@ export default function RegisterPage() {
           </p>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }

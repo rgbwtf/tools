@@ -1,11 +1,9 @@
 import { redirect } from "next/navigation"
-
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
 import { EmptyPlaceholder } from "@/components/shared/empty-placeholder"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { DashboardShell } from "@/components/dashboard/shell"
-import { Button } from "@/components/ui/button"
 
 export const metadata = {
   title: "Dashboard",
@@ -17,12 +15,10 @@ export default async function DashboardPage() {
   if (!user) {
     redirect(authOptions?.pages?.signIn || "/login")
   }
-
+  
   return (
     <DashboardShell>
-      <DashboardHeader heading="Panel" text="Create and manage content.">
-        {/* <Button>Fake button</Button> */}
-      </DashboardHeader>
+      <DashboardHeader heading="Overview" text="Account dashboard" />
       <div>
         <EmptyPlaceholder>
           <EmptyPlaceholder.Icon name="post" />
@@ -30,7 +26,6 @@ export default async function DashboardPage() {
           <EmptyPlaceholder.Description>
             Coming soon...
           </EmptyPlaceholder.Description>
-          {/* <Button variant="outline">Fake button</Button> */}
         </EmptyPlaceholder>
       </div>
     </DashboardShell>
