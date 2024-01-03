@@ -54,7 +54,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     if (printer.cartridges.length > 0) {
       const cartridge = printer.cartridges;
 
-      const cartridgeId = cartridges[0].id;
+      const cartridgeId = cartridge[0].id;
       const layers = await prisma.layer.findMany({
         where: {
           cartridgeId: cartridgeId,
