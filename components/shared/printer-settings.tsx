@@ -4,7 +4,6 @@ import { toast } from '../ui/use-toast'
 import { Button } from '../ui/button'
 import { channels } from '@/config/printer'
 import { Label } from '../ui/label'
-import { useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 const RgbSettings = (props: any) => {
@@ -25,13 +24,6 @@ const RgbSettings = (props: any) => {
 		})
 		return null;
 	}
-
-	useEffect(() => {	  
-		window.addEventListener("keydown", handleKeyDown);
-		return () => {
-		  window.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [handleKeyDown]);
 	
 	return (
 		<>

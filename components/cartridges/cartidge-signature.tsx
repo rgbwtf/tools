@@ -66,6 +66,13 @@ const CartridgeSignature = () => {
 		link.click();
 	};
 
+	useEffect(() => {	  
+		window.addEventListener("keydown", handleKeyDown);
+		return () => {
+		  window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [handleKeyDown]);
+
 	useEffect(() => {
 		const newBinary: string[] = [];
 		for (let i = 0; i < 3; i++) {
@@ -82,7 +89,7 @@ const CartridgeSignature = () => {
 		}
 		setBinary(newBinary);
 	}, [rgb]);
-	
+
 	return (
 		<div>
 			<div className="my-8 flex flex-col justify-center sm:flex-row">

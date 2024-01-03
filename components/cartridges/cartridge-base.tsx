@@ -1,7 +1,7 @@
 'use client'
 
 import { UploadStatus } from "@prisma/client"
-import { useCallback, useEffect, useState, ChangeEvent } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { generateRgb } from "@/lib/rgb"
 import { OrderedData, Rgb} from "@/lib/validations/printer"
 import PrinterSettings from "../shared/printer-settings"
@@ -76,6 +76,13 @@ const CartridgeBase = ({
 				break;
 		}
 	}, [rgb, rgbHistory, currentHistoryIndex])
+
+	useEffect(() => {	  
+		window.addEventListener("keydown", handleKeyDown);
+		return () => {
+		  window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [handleKeyDown]);
 
 	const handleDownload = (): void => {
 		console.log('download');
