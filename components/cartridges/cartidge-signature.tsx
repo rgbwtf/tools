@@ -6,6 +6,7 @@ import { Rgb } from "@/lib/validations/printer"
 import PrinterSettings from "../shared/printer-settings"
 import Signature from "@/components/canvases/canvas-signature"
 import Palette from "@/components/canvases/canvas-palette"
+import { channel } from "diagnostics_channel"
 
 const CartridgeSignature = () => {
 	const [binary, setBinary] = useState(["00000000","00000000","00000000"]);
@@ -19,9 +20,15 @@ const CartridgeSignature = () => {
 		setCurrentHistoryIndex(currentHistoryIndex + 1);
 	};
 
-	const handleInputChange = (color: number, e: ChangeEvent<HTMLInputElement>): void => {
+	const handleInputChange = (channel: number, event: ChangeEvent<HTMLInputElement>): void => {
+		let value = event.target.valueAsNumber;
+		if (isNaN(value)) {
+			value = 0; // or any default value you want
+		} else if (value > 255) {
+			value = 255; // limit the value to 255
+		}
 		const newRgb = [...rgb] as Rgb;
-		newRgb[color] = e.target.valueAsNumber;
+		newRgb[channel] = value;
 		setRgb(newRgb);
 		setRgbHistory([...rgbHistory.slice(0, currentHistoryIndex + 1), newRgb]);
 		setCurrentHistoryIndex(currentHistoryIndex + 1);

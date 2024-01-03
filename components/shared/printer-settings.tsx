@@ -7,13 +7,20 @@ import { Label } from '../ui/label'
 import { cn } from '@/lib/utils'
 
 const RgbSettings = (props: any) => {
+	const parsed = PrintSettingsSchema.safeParse(props);
+
+	if (!parsed.success) {
+		console.error(parsed.error);
+		// handle error
+		return;
+	}
 	const {
-		rgb,
-		handleInputChange,
-		randomRgb,
-		handleKeyDown,
-		handleDownload,
-	} = PrintSettingsSchema.parse(props);
+    rgb,
+    handleInputChange,
+    randomRgb,
+    handleKeyDown,
+    handleDownload,
+} = parsed.data;
 
 	if (rgb === null) {
 		console.error(rgb);
@@ -24,12 +31,18 @@ const RgbSettings = (props: any) => {
 		})
 		return null;
 	}
+
+	if (!rgb || !Array.isArray(rgb)) {
+    console.error('rgb is not defined or not an array:', rgb);
+    // handle error, e.g., return null or a default value
+    return null;
+}
 	
 	return (
 		<>
 			<div className="mb-3 grid grid-flow-col place-content-center">
 				{channels.map((channel, index) => (
-					<div className="flex flex-col items-center">
+					<div className="flex flex-col items-center" key={index}>
 						<Label
 							htmlFor={channel}
 							className="block text-center text-2xl font-bold"

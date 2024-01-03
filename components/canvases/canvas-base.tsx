@@ -14,7 +14,7 @@ const Canvas = ({
 				const layers = data?.[channel];
 				if (!layers || layers.length === 0) {
 					return (
-						<div className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
+						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
 							<Icons.media className="w-10 h-10" />
 						</div>
 					);
@@ -24,7 +24,7 @@ const Canvas = ({
 				const layer = layers.find(layer => layer.value === value);
 				if (!layer) {
 					return (
-						<div className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
+						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
 							<Icons.media className="w-10 h-10" />
 						</div>
 					);
@@ -32,9 +32,9 @@ const Canvas = ({
 
 				return (
 					<Image
-						width={600}
-						height={600} 
 						key={index} 
+						width={600}
+						height={600}
 						src={layer.imageUrl} 
 						alt={`layer ${index}`} 
 						style={{ 

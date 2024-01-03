@@ -52,8 +52,14 @@ const CartridgeBase = ({
 	};
 
 	const handleInputChange = (channel: number, event: React.ChangeEvent<HTMLInputElement>) => {
+		let value = event.target.valueAsNumber;
+		if (isNaN(value)) {
+			value = 0; // or any default value you want
+		} else if (value > 255) {
+			value = 255; // limit the value to 255
+		}
 		const newRgb = [...rgb] as Rgb;
-		newRgb[channel] = event.target.valueAsNumber;
+		newRgb[channel] = value;
 		setRgb(newRgb);
 		setRgbHistory([...rgbHistory.slice(0, currentHistoryIndex + 1), newRgb]);
 		setCurrentHistoryIndex(currentHistoryIndex + 1);
