@@ -57,13 +57,18 @@ const DeletePrinter = ({
       <DialogTrigger
         onClick={() => setIsOpen(true)}
         asChild>
-        <Button>Delete Printer</Button>
+        <Button
+          variant='ghost'
+        >
+          Delete Printer
+        </Button>
       </DialogTrigger>
 
       <DialogContent>
         Are you sure?
 				<form action={onSubmit}>
 					<Button
+            variant='destructive'
 						type='submit'
 						className='mt-4 w-full'
 						disabled={isPending}

@@ -52,7 +52,7 @@ const Canvas = ({
 			})}
 			<Signature
 				binary={binary as [string, string, string]}
-				className="z-20 absolute w-8 h-8 bottom-4 right-4 border"
+				className="z-20 absolute w-8 h-8 bottom-2 right-2 border-2"
 			/>
 		</div>
 	)
