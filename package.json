@@ -93,7 +93,7 @@
     "stripe": "^14.7.0",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^6.1.0",
+    "uploadthing": "^6.1.1",
     "uppie": "^4.0.0",
     "vaul": "^0.7.9",
     "zod": "^3.22.4",
