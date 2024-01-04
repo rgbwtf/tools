@@ -6,7 +6,6 @@ import { generateRgb } from "@/lib/rgb"
 import { OrderedData, Rgb} from "@/lib/validations/printer"
 import PrinterSettings from "../shared/printer-settings"
 import Canvas from "@/components/canvases/canvas-base"
-import { downloadOptions } from "@/config/printer"
 import domtoimage from 'dom-to-image';
 
 interface Layer {

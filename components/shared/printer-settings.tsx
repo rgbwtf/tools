@@ -2,7 +2,7 @@ import { Input } from '../ui/input'
 import { PrintSettingsSchema } from '@/lib/validations/printer'
 import { toast } from '../ui/use-toast'
 import { Button } from '../ui/button'
-import { channels } from '@/config/printer'
+import { channels, downloadDisabled } from '@/config/printer'
 import { Label } from '../ui/label'
 import { cn } from '@/lib/utils'
 
@@ -68,6 +68,7 @@ const RgbSettings = (props: any) => {
 					variant="outline"
 					onClick={handleDownload}
 					className="hidden sm:block"
+					disabled={downloadDisabled}
 				>
 					{'Download'}
 				</Button>
