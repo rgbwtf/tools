@@ -12,7 +12,7 @@ import { ACTION, ENTITY_TYPE } from "@prisma/client";
 import { getCurrentUser } from "@/lib/session"
 import { getAdmin } from "@/lib/admin"
 import { utapi } from "@/lib/utapi"
-export const maxDuration = 300;
+
 const handler = async (data: InputType): Promise<ReturnType> => {
   
 
