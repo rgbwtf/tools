@@ -1,11 +1,13 @@
 'use client'
 
 import { UploadStatus } from "@prisma/client"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useRef } from "react"
 import { generateRgb } from "@/lib/rgb"
 import { OrderedData, Rgb} from "@/lib/validations/printer"
 import PrinterSettings from "../shared/printer-settings"
 import Canvas from "@/components/canvases/canvas-base"
+import { downloadOptions } from "@/config/printer"
+import domtoimage from 'dom-to-image';
 
 interface Layer {
   id: string;
@@ -27,12 +29,6 @@ interface CartridgeProps {
     updatedAt: Date;
     layers?: Layer[];
   } | null;
-}
-
-interface LayersByChannel {
-  red: Layer[];
-  green: Layer[];
-  blue: Layer[];
 }
 
 const CartridgeBase = ({
@@ -90,9 +86,53 @@ const CartridgeBase = ({
 		};
 	}, [handleKeyDown]);
 
+	const printRef = useRef<HTMLDivElement>(null);
+
 	const handleDownload = (): void => {
-		console.log('download');
-	}
+    const printElement = printRef.current;
+    if (!printElement) return;
+
+    // Get all images within the SVG
+    const images = printElement.querySelectorAll('img');
+
+    // Convert NodeList to Array
+    const imageArray = Array.from(images);
+
+    // Create a promise for each image
+    const imagePromises = imageArray.map((img, index) => new Promise<void>((resolve, reject) => {
+			if (img.complete) {
+				resolve();
+			} else {
+				img.onload = () => resolve();
+				img.onerror = () => {
+					console.error(`Image at index ${index} failed to load`);
+					reject();
+				};
+			}
+		}));
+
+    // Wait for all images to load
+    Promise.all(imagePromises)
+        .then(() => {
+						
+            // All images are loaded, render the SVG
+            domtoimage.toPng(printElement, {cacheBust: true})
+                .then(function (dataUrl) {
+										console.log(dataUrl);
+                    var link = document.createElement('a');
+                    link.download = 'my-image-name.png';
+                    link.href = dataUrl;
+                    link.click();
+                })
+                .catch(function (error) {
+                    console.error('oops, something went wrong!', error);
+                });
+        })
+        .catch((error) => {
+            // One or more images failed to load
+            console.error('Image failed to load', error);
+        });
+};
 
 	useEffect(() => {
 		const newBinary: string[] = [];
@@ -131,17 +171,16 @@ const CartridgeBase = ({
 			setOrderedData(null);
 		}
 	}, [data]);
-	
+
 	return (
 		<div>
 			<div className="my-8 flex flex-col justify-center sm:flex-row">
-				<Canvas rgb={rgb} data={orderedData} binary={binary} />
+				<Canvas rgb={rgb} data={orderedData} binary={binary} ref={printRef}/>
 			</div>
 			<PrinterSettings
 				rgb={rgb}
 				handleInputChange={handleInputChange}
 				randomRgb={randomRgb}
-				handleKeyDown={handleKeyDown}
 				handleDownload={handleDownload}
 			/>
 		</div>

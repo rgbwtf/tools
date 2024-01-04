@@ -18,7 +18,6 @@ export const PrintSettingsSchema = z.object({
   rgb: z.tuple([RGBValue, RGBValue, RGBValue]),
   handleInputChange: z.function(z.tuple([z.number(), z.any()])).returns(z.void()),
   randomRgb: z.function(z.tuple([z.any()])).returns(z.void()),
-  handleKeyDown: z.function(z.tuple([z.any()])).returns(z.void()),
   handleDownload: z.function().returns(z.void()),
 });
 
@@ -36,6 +35,7 @@ export type CanvasProps = {
   rgb: Rgb;
   data: OrderedData;
   binary: string[];
+  ref: any;
 }
 
 export type RGBInputsProps = {

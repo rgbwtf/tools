@@ -125,7 +125,7 @@ const CanvasSignature: FC<SignatureProps> = ({ binary, className }) => {
 	}
 
 	return (
-		<svg className={cn(className)} viewBox="0 0 15 15" height="15" width="15">
+		<svg id="signature" className={cn(className)} viewBox="0 0 15 15" height="15" width="15">
 			{svg}
 		</svg>
 	);

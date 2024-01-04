@@ -1,15 +1,15 @@
 import { CanvasProps } from "@/lib/validations/printer"
-import Image from "next/image"
 import { Icons } from "@/components/shared/icons"
 import Signature from "@/components/canvases/canvas-signature"
+import { forwardRef, Ref} from "react"
 
-const Canvas = ({
+const Canvas = forwardRef(({
 	rgb,
 	data,
 	binary,
-}: CanvasProps) => {
+}: CanvasProps, ref: Ref<HTMLDivElement>) => {
 	return (
-		<div className="relative h-60 w-60 place-self-center border md:h-96 md:w-96">
+		<div className="relative h-60 w-60 place-self-center border md:h-96 md:w-96" ref={ref}>
 			{rgb.map((value, index) => {
 				const channel = ['red', 'green', 'blue'][index]; // get the corresponding channel
 				const layers = data?.[channel];
@@ -32,7 +32,7 @@ const Canvas = ({
 				}
 
 				return (
-					<Image
+					<img
 						key={index} 
 						width={600}
 						height={600}
@@ -52,11 +52,11 @@ const Canvas = ({
 			})}
 			<Signature
 				binary={binary as [string, string, string]}
-				className="z-20 absolute w-8 h-8 bottom-2 right-2 border-2"
+				className="z-20 absolute w-8 h-8 bottom-2 right-2 border-2 border-black"
 			/>
 		</div>
 	)
-}
+});
 
 export default Canvas;
 

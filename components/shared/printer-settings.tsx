@@ -18,9 +18,8 @@ const RgbSettings = (props: any) => {
     rgb,
     handleInputChange,
     randomRgb,
-    handleKeyDown,
     handleDownload,
-} = parsed.data;
+	} = parsed.data;
 
 	if (rgb === null) {
 		console.error(rgb);
