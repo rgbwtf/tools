@@ -1,3 +1,5 @@
+export const maxDuration = 300;
+
 import { redirect } from "next/navigation"
 
 import { authOptions } from "@/lib/auth"
