@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 import { PaletteProps } from "@/types";
+import { cn } from "@/lib/utils"
 
-const CanvasPalette: FC<PaletteProps> = ({ rgb }) => {
+const CanvasPalette: FC<PaletteProps> = ({ rgb, className }) => {
   return (
     <div
-			className="m-4 h-32 w-32 place-self-center border md:h-60 md:w-60"
+			className={cn(className)}
 			style={{
 				backgroundColor: `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
 			}}

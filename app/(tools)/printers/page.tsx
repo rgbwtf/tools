@@ -1,13 +1,3 @@
-import { redirect } from "next/navigation"
-
-import { authOptions } from "@/lib/auth"
-import { getCurrentUser } from "@/lib/session"
-import { DashboardHeader } from "@/components/dashboard/header"
-import { DashboardShell } from "@/components/dashboard/shell"
-import { NewPrinterForm } from "@/components/forms/form-new-printer"
-import { PERMISSIONS } from "@prisma/client"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import Container from "@/components/container"
 import { prisma } from "@/lib/db"
 import Image from "next/image"

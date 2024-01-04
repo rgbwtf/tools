@@ -14,8 +14,6 @@ import { getAdmin } from "@/lib/admin"
 import { utapi } from "@/lib/utapi"
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  
-
   const user = await getCurrentUser()
 
   if (!user || !user.id) throw new Error('Unauthorized')

@@ -6,7 +6,6 @@ import { Rgb } from "@/lib/validations/printer"
 import PrinterSettings from "../shared/printer-settings"
 import Signature from "@/components/canvases/canvas-signature"
 import Palette from "@/components/canvases/canvas-palette"
-import { channel } from "diagnostics_channel"
 
 const CartridgeSignature = () => {
 	const [binary, setBinary] = useState(["00000000","00000000","00000000"]);
@@ -99,9 +98,9 @@ const CartridgeSignature = () => {
 
 	return (
 		<div>
-			<div className="my-8 flex flex-col justify-center sm:flex-row">
-				<Signature binary={binary as [string, string, string]} />
-				<Palette rgb={rgb as [number, number, number]} />
+			<div className="my-8 justify-center sm:flex-row grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<Signature binary={binary as [string, string, string]} className="h-30 w-30 sm:h-33 sm:w-33 md:h-60 md:w-60 justify-self-center sm:justify-self-end" />
+				<Palette rgb={rgb as [number, number, number]} className="h-32 w-32 place-self-center border md:h-60 md:w-60 justify-self-center sm:justify-self-start" />
 			</div>
 			<PrinterSettings
 				rgb={rgb}

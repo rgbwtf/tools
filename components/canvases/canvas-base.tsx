@@ -1,6 +1,7 @@
 import { CanvasProps } from "@/lib/validations/printer"
 import Image from "next/image"
 import { Icons } from "@/components/shared/icons"
+import Signature from "@/components/canvases/canvas-signature"
 
 const Canvas = ({
 	rgb,
@@ -14,7 +15,7 @@ const Canvas = ({
 				const layers = data?.[channel];
 				if (!layers || layers.length === 0) {
 					return (
-						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
+						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30 z-0">
 							<Icons.media className="w-10 h-10" />
 						</div>
 					);
@@ -24,7 +25,7 @@ const Canvas = ({
 				const layer = layers.find(layer => layer.value === value);
 				if (!layer) {
 					return (
-						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30">
+						<div key={index} className="flex justify-center items-center h-full w-full absolute top-0 left-0 opacity-30 z-0">
 							<Icons.media className="w-10 h-10" />
 						</div>
 					);
@@ -44,10 +45,15 @@ const Canvas = ({
 							width: '100%', 
 							height: '100%', 
 							objectFit: 'cover', 
-						}} 
+						}}
+						className="z-10"
 					/>
 				);
 			})}
+			<Signature
+				binary={binary as [string, string, string]}
+				className="z-20 absolute w-8 h-8 bottom-4 right-4 border"
+			/>
 		</div>
 	)
 }

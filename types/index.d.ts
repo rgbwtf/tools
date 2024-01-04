@@ -89,6 +89,7 @@ export type UserAdmin = User & {
 
 export type SignatureProps = {
   binary: [string, string, string];
+  className?: string;
 }
 
 export type RGB = {
@@ -99,6 +100,7 @@ export type RGB = {
 
 export type PaletteProps = {
 	rgb: [number, number, number];
+  className?: string;
 }
 
 export type ControlsProps = {

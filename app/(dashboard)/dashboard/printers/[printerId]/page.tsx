@@ -1,4 +1,5 @@
 export const maxDuration = 300;
+export const runtime = 'edge'
 
 import { redirect } from "next/navigation"
 
@@ -13,10 +14,10 @@ import UpdateCartridge from "@/components/dashboard/printers/update-cartridge"
 import { utapi, UploadFileResponse } from "@/lib/utapi"
 import { printerConfig } from "@/config/printer"
 import LayersList from "@/components/dashboard/printers/list-layers"
-import { updateCartridgeLayers } from "@/actions/update-cartridge-layers"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+
 interface EditPrinterIdPageProps {
   params: {
     printerId: string;

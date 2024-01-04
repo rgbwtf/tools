@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { SignatureProps } from "@/types";
+import { cn } from "@/lib/utils"
 
-const CanvasSignature: FC<SignatureProps> = ({ binary }) => {
+const CanvasSignature: FC<SignatureProps> = ({ binary, className }) => {
 	// Convert the RGB values to binary
 	const redBinary = binary[0];
 	const greenBinary = binary[1];
@@ -124,11 +125,9 @@ const CanvasSignature: FC<SignatureProps> = ({ binary }) => {
 	}
 
 	return (
-		<div id="signature" className="m-4 place-self-center border">
-			<svg className="h-30 w-30 sm:h-33 sm:w-33 md:h-60 md:w-60" viewBox="0 0 15 15" height="15" width="15">
-				{svg}
-			</svg>
-		</div>
+		<svg className={cn(className)} viewBox="0 0 15 15" height="15" width="15">
+			{svg}
+		</svg>
 	);
 };
 
