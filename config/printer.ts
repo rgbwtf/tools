@@ -5,4 +5,3 @@ export const printerConfig = {
 export const channels = ['red', 'green', 'blue'];
 
 export const downloadDisabled = false;
-
