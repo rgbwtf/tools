@@ -34,8 +34,8 @@ const Canvas = forwardRef(({
 				return (
 					<img
 						key={index} 
-						width={600}
-						height={600}
+						width={2580}
+						height={2580}
 						src={layer.imageUrl} 
 						alt={`layer ${index}`} 
 						style={{ 

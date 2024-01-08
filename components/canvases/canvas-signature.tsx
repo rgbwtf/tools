@@ -131,7 +131,7 @@ const CanvasSignature: FC<SignatureProps> = ({ binary, className }) => {
 			viewBox="0 0 15 15"
 			height="15"
 			width="15"
-			shape-rendering="crispEdges"
+			shapeRendering="crispEdges"
 		>
 			{svg}
 		</svg>

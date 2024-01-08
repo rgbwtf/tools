@@ -22,6 +22,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   if (!isAdmin) throw new Error('Unauthorized')
 
+
+  console.log({data})
   // Find existing cartridge for the printerId
   const existingCartridge= await prisma.cartridge.findUnique({
     where: { printerId: data.printerId },

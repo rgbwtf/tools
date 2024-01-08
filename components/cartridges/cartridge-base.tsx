@@ -88,50 +88,70 @@ const CartridgeBase = ({
 	const printRef = useRef<HTMLDivElement>(null);
 
 	const handleDownload = (): void => {
-    const printElement = printRef.current;
-    if (!printElement) return;
-
-    // Get all images within the SVG
-    const images = printElement.querySelectorAll('img');
-
-    // Convert NodeList to Array
-    const imageArray = Array.from(images);
-
-    // Create a promise for each image
-    const imagePromises = imageArray.map((img, index) => new Promise<void>((resolve, reject) => {
-			if (img.complete) {
-				resolve();
-			} else {
-				img.onload = () => resolve();
-				img.onerror = () => {
-					console.error(`Image at index ${index} failed to load`);
-					reject();
+		const printElement = printRef.current;
+		if (!printElement) {
+			console.error('Print element is not available.');
+			return;
+		}
+	
+		// Clone the printElement
+		const clonedPrintElement = printElement.cloneNode(true) as HTMLElement;
+	
+		// Find the image element within the clonedPrintElement
+		const imageElement = clonedPrintElement.querySelector('img');
+		if (!imageElement) {
+			console.error('Image element is not found in the cloned element.');
+			return;
+		}
+	
+		// Update the cloned image element's style to its natural size
+		imageElement.style.width = `${imageElement.naturalWidth}px`;
+		imageElement.style.height = `${imageElement.naturalHeight}px`;
+	
+		// Use the natural dimensions of the image for the canvas
+		const width = imageElement.naturalWidth;
+		const height = imageElement.naturalHeight;
+	
+		// Render the cloned element with dom-to-image at the full resolution
+		domtoimage.toBlob(clonedPrintElement, { width, height })
+			.then(blob => {
+				const img = new Image();
+				img.onload = () => {
+					const offScreenCanvas = document.createElement('canvas');
+					offScreenCanvas.width = width;
+					offScreenCanvas.height = height;
+					const ctx = offScreenCanvas.getContext('2d');
+					if (!ctx) {
+						console.error('Failed to get 2D context');
+						return;
+					}
+					ctx.drawImage(img, 0, 0, width, height);
+	
+					// Convert canvas to blob and download
+					offScreenCanvas.toBlob(blob => {
+						if (!blob) {
+							console.error('Failed to create blob from canvas');
+							return;
+						}
+						const dataUrl = URL.createObjectURL(blob);
+						const link = document.createElement('a');
+						link.href = dataUrl;
+						link.download = 'download.png'; // Set the filename for download
+						document.body.appendChild(link);
+						link.click();
+						document.body.removeChild(link);
+						URL.revokeObjectURL(dataUrl);
+					}, 'image/png');
 				};
-			}
-		}));
-
-    // Wait for all images to load
-    Promise.all(imagePromises)
-        .then(() => {
-						
-            // All images are loaded, render the SVG
-            domtoimage.toPng(printElement, {cacheBust: true})
-                .then(function (dataUrl) {
-										console.log(dataUrl);
-                    var link = document.createElement('a');
-                    link.download = 'my-image-name.png';
-                    link.href = dataUrl;
-                    link.click();
-                })
-                .catch(function (error) {
-                    console.error('oops, something went wrong!', error);
-                });
-        })
-        .catch((error) => {
-            // One or more images failed to load
-            console.error('Image failed to load', error);
-        });
-};
+				img.src = URL.createObjectURL(blob);
+				img.onerror = (error) => {
+					console.error('Image failed to load', error);
+				};
+			})
+			.catch((error) => {
+				console.error('Failed to capture the cloned element at full resolution', error);
+			});
+	};
 
 	useEffect(() => {
 		const newBinary: string[] = [];
