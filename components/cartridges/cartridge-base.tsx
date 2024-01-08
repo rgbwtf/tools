@@ -28,10 +28,12 @@ interface CartridgeProps {
     updatedAt: Date;
     layers?: Layer[];
   } | null;
+	displaySignature: boolean;
 }
 
 const CartridgeBase = ({
-	data
+	data,
+	displaySignature
 }: CartridgeProps) => {
 	const [binary, setBinary] = useState<string[]>(["00000000","00000000","00000000"]);
 	const [rgb, setRgb] = useState<Rgb>([0, 0, 0]);
@@ -194,7 +196,13 @@ const CartridgeBase = ({
 	return (
 		<div>
 			<div className="my-8 flex flex-col justify-center sm:flex-row">
-				<Canvas rgb={rgb} data={orderedData} binary={binary} ref={printRef}/>
+				<Canvas
+					rgb={rgb}
+					data={orderedData}
+					binary={binary}
+					ref={printRef}
+					displaySignature={displaySignature}
+				/>
 			</div>
 			<PrinterSettings
 				rgb={rgb}

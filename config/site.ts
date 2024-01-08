@@ -4,7 +4,7 @@ import { SiteConfig } from "types"
 const site_url = env.NEXT_PUBLIC_APP_URL;
 
 export const siteConfig: SiteConfig = {
-  name: "RBG Tools",
+  name: "RBG",
   description:
     "A canvas for limitless creativity.",
   url: site_url,

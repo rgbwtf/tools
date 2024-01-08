@@ -84,6 +84,8 @@ model Printer {
   imageId  String? @unique
   imageUrl String? @db.Text
 
+  displaySignature Boolean @default(false)
+
   cartridges Cartridge[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt

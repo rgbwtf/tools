@@ -7,6 +7,7 @@ const Canvas = forwardRef(({
 	rgb,
 	data,
 	binary,
+	displaySignature,
 }: CanvasProps, ref: Ref<HTMLDivElement>) => {
 	return (
 		<div className="relative h-60 w-60 place-self-center border md:h-96 md:w-96" ref={ref}>
@@ -50,10 +51,12 @@ const Canvas = forwardRef(({
 					/>
 				);
 			})}
-			<Signature
-				binary={binary as [string, string, string]}
-				className="z-20 absolute w-8 h-8 bottom-2 right-2 border-2 border-black"
-			/>
+			{displaySignature && (
+				<Signature
+					binary={binary as [string, string, string]}
+					className="z-20 absolute w-8 h-8 bottom-2 right-2 border-2 border-black"
+				/>
+			)}
 		</div>
 	)
 });

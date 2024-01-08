@@ -83,7 +83,9 @@ const LayersList = async ({
 					))}
 				</Accordion>
 			) : (
-				<UpdateCartridgeEmpty printerId={printerId} updateCartridge={updateCartridge} />
+				<div className="flex items-center justify-center h-48 border-2 border-dashed">
+					<p>No layers available</p>
+				</div>
 			)}
 		</>
   )

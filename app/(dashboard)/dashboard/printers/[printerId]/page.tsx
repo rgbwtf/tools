@@ -16,6 +16,7 @@ import LayersList from "@/components/dashboard/printers/list-layers"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import UpdateDisplaySignature from "@/components/dashboard/printers/update-display-signature"
 
 interface EditPrinterIdPageProps {
   params: {
@@ -95,6 +96,11 @@ export default async function EditPrinterPage({
     }
   });
 
+  if (!printer) {
+    // Handle the case when printer is null, e.g., show an error message or redirect
+    return <div>Printer not found</div>;
+  }
+  
   return (
     <DashboardShell>
       <DashboardHeader
@@ -112,6 +118,7 @@ export default async function EditPrinterPage({
       </DashboardHeader>
       <div className="grid gap-10">
         <UpdateCartridge printerId={printerId} updateCartridge={updateCartridge} />
+        <UpdateDisplaySignature printerId={printerId} displaySignature={printer.displaySignature}/>
       </div>
       <LayersList printerId={printerId} updateCartridge={updateCartridge}/>
       <div className="grid gap-10">

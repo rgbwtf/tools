@@ -36,6 +36,7 @@ export type CanvasProps = {
   data: OrderedData;
   binary: string[];
   ref: any;
+  displaySignature: boolean;
 }
 
 export type RGBInputsProps = {
