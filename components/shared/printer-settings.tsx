@@ -44,7 +44,7 @@ const RgbSettings = (props: any) => {
 					<div className="flex flex-col items-center" key={index}>
 						<Label
 							htmlFor={channel}
-							className="block text-center text-2xl font-bold"
+							className="block text-center text-xl md:text-2xl font-bold"
 						>
 							{channel.charAt(0).toUpperCase()}
 						</Label>
@@ -56,7 +56,7 @@ const RgbSettings = (props: any) => {
 							min={0}
 							max={255}
 							className={cn(
-								"text-3xl font-bold text-center py-6 px-2 pl-6 sm:px-8 border-l-0 sm:pl-12",
+								"text-sm sm:text-xl md:text-3xl font-bold text-center py-2 sm:py-4 md:py-6 px-2 sm:px-6 md:px-8 pl-2 sm:pl-12 border-l-0",
 								{"border-l-1": index === 0}
 							)}
 						/>

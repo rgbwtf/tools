@@ -100,7 +100,7 @@ const CartridgeSignature = () => {
 		<div>
 			<div className="my-8 justify-center sm:flex-row grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<Signature binary={binary as [string, string, string]} className="h-30 w-30 sm:h-33 sm:w-33 md:h-60 md:w-60 justify-self-center sm:justify-self-end border" />
-				<Palette rgb={rgb as [number, number, number]} className="h-32 w-32 place-self-center border md:h-60 md:w-60 justify-self-center sm:justify-self-start" />
+				<Palette rgb={rgb as [number, number, number]} className="h-30 w-30 sm:h-33 sm:w-33 place-self-center border md:h-60 md:w-60 justify-self-center sm:justify-self-start" />
 			</div>
 			<PrinterSettings
 				rgb={rgb}
