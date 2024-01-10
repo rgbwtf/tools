@@ -117,9 +117,9 @@ export default async function EditPrinterPage({
         </Link>
       </DashboardHeader>
       <div className="grid gap-10">
-        <UpdateCartridge printerId={printerId} updateCartridge={updateCartridge} />
         <UpdateDisplaySignature printerId={printerId} displaySignature={printer.displaySignature}/>
       </div>
+      <UpdateCartridge printerId={printerId} updateCartridge={updateCartridge} />
       <LayersList printerId={printerId} updateCartridge={updateCartridge}/>
       <div className="grid gap-10">
         <DeletePrinter printerId={printerId} />

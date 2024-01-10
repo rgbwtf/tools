@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/db"
 import { User } from "next-auth"
 import { formatDistanceToNow } from 'date-fns'
-import PrintersListEmpty from "./list-printers-empty"
 import Link from "next/link"
 import Image from "next/image"
+import { EmptyPlaceholder } from "@/components/shared/empty-placeholder"
+import Balancer from "react-wrap-balancer"
 const PrintersList = async ({
 	user,
 }: {
@@ -38,7 +39,15 @@ const PrintersList = async ({
 					))}
 				</div>
 			) : (
-				<PrintersListEmpty />
+				<EmptyPlaceholder>
+          <EmptyPlaceholder.Icon name="printer" />
+          <EmptyPlaceholder.Title>No printers</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Description>
+						<Balancer>
+							You haven't created any printers yet. Start by creating a new printer.
+						</Balancer>
+          </EmptyPlaceholder.Description>
+        </EmptyPlaceholder>
 			)}
 		</>
   )

@@ -8,8 +8,13 @@ export const metadata = {
 }
 
 export default async function PrintersPage() {
-  const printers = await prisma.printer.findMany()
-
+  const printers = await prisma.printer.findMany({
+    where: {
+      cartridges: {
+        some: {},
+      },
+    },
+  })
 
   return (
     <Container>

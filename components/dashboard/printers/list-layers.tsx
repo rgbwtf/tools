@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/db"
-import UpdateCartridgeEmpty from "./update-cartridge-empty"
 import UpdateLayer from "./update-layer"
 import Image from "next/image"
 import {
@@ -8,14 +7,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { EmptyPlaceholder } from "@/components/shared/empty-placeholder"
+import Balancer from "react-wrap-balancer"
+
+
+interface LayersListProps {
+	printerId: string;
+	updateCartridge: (formData: FormData) => void;
+};
 
 const LayersList = async ({
 	printerId,
 	updateCartridge,
-}: {
-	printerId: string
-	updateCartridge: (formData: FormData) => void
-}) => {
+}: LayersListProps) => {
 	const cartridgeWithLayers = await prisma.cartridge.findFirst({
 		where: {
 			printerId: printerId,
@@ -83,9 +87,15 @@ const LayersList = async ({
 					))}
 				</Accordion>
 			) : (
-				<div className="flex items-center justify-center h-48 border-2 border-dashed">
-					<p>No layers available</p>
-				</div>
+				<EmptyPlaceholder>
+          <EmptyPlaceholder.Icon name="image" />
+          <EmptyPlaceholder.Title>No layers available</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Description>
+						<Balancer>
+							You don&apos;t have any layers yet. Start by uploading a cartridge.
+						</Balancer>
+          </EmptyPlaceholder.Description>
+        </EmptyPlaceholder>
 			)}
 		</>
   )
