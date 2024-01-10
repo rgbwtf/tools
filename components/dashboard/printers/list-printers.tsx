@@ -44,7 +44,7 @@ const PrintersList = async ({
           <EmptyPlaceholder.Title>No printers</EmptyPlaceholder.Title>
           <EmptyPlaceholder.Description>
 						<Balancer>
-							You haven't created any printers yet. Start by creating a new printer.
+							You haven&apos;t created any printers yet. Start by creating a new printer.
 						</Balancer>
           </EmptyPlaceholder.Description>
         </EmptyPlaceholder>
