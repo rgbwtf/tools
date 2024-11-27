@@ -43,14 +43,17 @@ export function NavBar({ user, items, children, rightElements, scroll = false }:
                   buttonVariants({ variant: "outline", size: "sm" })
                 )}
               >
-                Login Page
+                Login
               </Link>
             ) : null}
 
-            {user ? (
+            {/* {user ? (
+                <UserAccountNav user={user} />
+              ) : (
+                <Button className="px-3" variant="default" size="sm" onClick={signInModal.onOpen}>Sign In</Button>
+            )} */}
+            {user && (
               <UserAccountNav user={user} />
-            ) : (
-              <Button className="px-3" variant="default" size="sm" onClick={signInModal.onOpen}>Sign In</Button>
             )}
           </div>
         </Container>
