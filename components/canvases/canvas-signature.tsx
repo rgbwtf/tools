@@ -106,6 +106,7 @@ const CanvasSignature: FC<SignatureProps> = ({ binary, className }) => {
 					} else {
 						fill = binaryDigit === "0" ? "black" : "white";
 					}
+					
 					grid.push(
 						<rect
 						key={`${col * 3 + j}-${row * 3 + i}`}
