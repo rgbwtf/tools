@@ -96,16 +96,15 @@ const CanvasSignature: FC<SignatureProps> = ({ binary, className }) => {
 					// Fill the center pixel if the binary digit is 0, otherwise leave it blank
 					if (i === 1 && j === 1) {
 						if (binaryDigit === "0") {
-						
-						fill = "black";
+							fill = "white";
 						} else {
-						fill = "white";
+							fill = "black";
 						}
 					} else {
-						fill = binaryDigit === "0" ? "white" : "black";
+						fill = binaryDigit === "0" ? "black" : "white";
 					}
 					} else {
-					fill = binaryDigit === "0" ? "white" : "black";
+						fill = binaryDigit === "0" ? "black" : "white";
 					}
 
 					grid.push(
