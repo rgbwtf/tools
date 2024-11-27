@@ -113,7 +113,7 @@ const actions = [
     iconBackground: 'bg-teal-50',
   },
   {
-    live: true,
+    live: false,
     title: 'Printers',
     description: 'Explore generative prints for any RGB value.',
     href: '/printers',
